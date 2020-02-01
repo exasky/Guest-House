@@ -1,0 +1,17 @@
+authentication:
+  secret: 'this is a secret password'
+
+typeorm:
+  type: 'postgres'
+  host: 'localhost'
+  port: 32768
+  username: 'postgres'
+  password: ''
+  database: 'guest-house'
+  entities:
+    - 'dist/**/entity/*.entity.js'
+
+port: 3000
+
+guestHouse:
+  adminFirstPassword: 'admin'
