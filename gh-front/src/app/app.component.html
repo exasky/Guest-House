@@ -1,0 +1,44 @@
+<mat-toolbar class="d-flex justify-content-center">
+  <button mat-icon-button
+          *ngIf="authService.user" (click)="sidenavOpened = !sidenavOpened"
+          style="position: absolute; left: 10px">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <h2>Guest-House</h2>
+  <div *ngIf="authService.user" class="d-flex align-items-center"
+       style="position: absolute; right: 10px">
+    <button mat-button [matMenuTriggerFor]="menu" >
+      {{authService.user.username}}
+      <mat-icon>person</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <a routerLink="profile">
+        <button mat-menu-item>Profile</button>
+      </a>
+      <button mat-menu-item (click)="loginService.logout()">Logout</button>
+    </mat-menu>
+  </div>
+</mat-toolbar>
+
+<mat-sidenav-container class="flex-grow d-flex h-100">
+  <mat-sidenav mode="over" [opened]="sidenavOpened" *ngIf="authService.user">
+    <mat-list role="list">
+      <mat-list-item role="listitem">
+        <a routerLink="" (click)="sidenavOpened = false">
+          <button mat-button>Games</button>
+        </a>
+      </mat-list-item>
+      <mat-list-item role="listitem">
+        <button mat-button>Teams</button>
+      </mat-list-item>
+      <mat-list-item role="listitem" *ngIf="authService.user.role === 'ADMIN'">
+        <a routerLink="players" (click)="sidenavOpened = false">
+          <button mat-button>Users</button>
+        </a>
+      </mat-list-item>
+    </mat-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="flex-grow d-flex">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

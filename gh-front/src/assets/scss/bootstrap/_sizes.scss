@@ -1,0 +1,21 @@
+@each $key, $spacer in ($spacers) {
+  .m-#{$key} {
+    margin: $spacer !important;
+  }
+
+  .mt-#{$key} {
+    margin-top: $spacer !important;
+  }
+
+  .mb-#{$key} {
+    margin-bottom: $spacer !important;
+  }
+
+  .mr-#{$key} {
+    margin-right: $spacer !important;
+  }
+
+  .ml-#{$key} {
+    margin-left: $spacer !important;
+  }
+}

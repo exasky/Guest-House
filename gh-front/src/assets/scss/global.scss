@@ -1,0 +1,33 @@
+@import "flex";
+
+@import 'bootstrap/bootstrap';
+@import "material/material";
+
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  position: absolute;
+}
+
+.card-selected {
+  background-color: #007bff !important;
+}
+
+.overflow {
+  overflow: auto;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.center {
+  text-align: center;
+}
