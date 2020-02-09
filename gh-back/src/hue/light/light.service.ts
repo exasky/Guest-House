@@ -34,6 +34,12 @@ export class LightService extends HueCommonService<Lights> {
         return (await this.getApi()).setLightState(lightId, lightState);
     }
 
+    async onOff(lightId: number, on: boolean): Promise<any> {
+        const lightState = new LightState().on(on);
+
+        return (await this.getApi()).setLightState(lightId, lightState);
+    }
+
     async createOrUpdateAll(): Promise<LightModel[]> {
         const api = await this.getApi();
         const all: Light[] = await api.getAll();

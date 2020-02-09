@@ -12,4 +12,12 @@ router
     .post(checkDtoRequest(new ColorDto()),
         lightController.changeColor.bind(lightController));
 
+router
+    .route('/hue/light/on')
+    .post(lightController.on.bind(lightController));
+
+router
+    .route('/hue/light/off')
+    .post(lightController.off.bind(lightController));
+
 export default router;
