@@ -12,6 +12,15 @@ export class LightController {
         this.lightService = HueService.getInstance().lights;
     }
 
+    getAll(req: Request, res: Response) {
+        this.lightService.getAll()
+            .then(lights => {
+                res.send(lights);
+            }).catch(err => {
+            res.status(constants.HTTP_STATUS_BAD_REQUEST).send(err);
+        })
+    }
+
     on(req: Request, res: Response) {
         const c: OnOffDto = req.body;
 
@@ -19,7 +28,7 @@ export class LightController {
             .then(result => {
                 res.send(result);
             }).catch(err => {
-                res.status(constants.HTTP_STATUS_BAD_REQUEST).send(err);
+            res.status(constants.HTTP_STATUS_BAD_REQUEST).send(err);
         })
     }
 
