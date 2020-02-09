@@ -31,7 +31,7 @@ export class UserService {
             // return getRepository(PlayerEntity).findOne({where: {nickname: username}})
             .then((user: User) => {
                 if (!user) {
-                    return Promise.reject('USER_NOT_FOUND');
+                    return Promise.reject('USERNAME_PASSWORD_NOT_FOUND');
                 }
                 const playerPassword = user.password;
                 delete user.password;

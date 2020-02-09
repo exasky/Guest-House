@@ -4,7 +4,7 @@ import 'reflect-metadata';
 import {createServer} from 'http';
 import {createConnection} from 'typeorm';
 import {App} from './app';
-import {createAdminUser } from './utils/database';
+import {createAdminUser} from './utils/database';
 import {configureLogger, getConfiguration, getLogger} from './utils/utils';
 
 (async () => {
@@ -41,6 +41,7 @@ import {configureLogger, getConfiguration, getLogger} from './utils/utils';
             });
 
     } catch (e) {
+        console.log(e);
         getLogger().error(JSON.stringify(e));
     }
 })();

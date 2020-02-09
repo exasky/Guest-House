@@ -27,10 +27,6 @@ export class LoginService {
         return UserService
             .getInstance()
             .getByUsername(credential.username, credential.password).then((user) => {
-                if (!user) {
-                    return Promise.reject('USERNAME_PASSWORD_NOT_FOUND');
-                }
-
                 return this.sign(user);
             });
     }
