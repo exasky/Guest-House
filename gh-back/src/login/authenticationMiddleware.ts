@@ -16,7 +16,10 @@ export function checkAuthentication(req: Request, res: Response, next: NextFunct
         // verifies secret and checks exp
         verify(token, configuration.authentication.secret, (err: VerifyErrors, decoded: User) => {
             if (err) {
-                return res.json({success: false, message: 'Failed to authenticate token.'});
+                return res.status(constants.HTTP_STATUS_UNAUTHORIZED).send({
+                    message: 'No token provided.',
+                    success: false
+                });
             } else {
                 // if everything is good, save to request for use in other routes
                 // req.decoded = decoded;

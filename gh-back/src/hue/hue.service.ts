@@ -4,12 +4,12 @@ import {getConfiguration} from '../utils/utils';
 import ApiDefinition from 'node-hue-api/lib/api/http/ApiDefinition';
 import {LightService} from './light/light.service';
 
-const v3 = require('node-hue-api').v3
-    , discovery = v3.discovery
-    , hueApi = v3.api
-;
+const hueApi = require('node-hue-api').v3.api;
 
 export class HueService extends HueCommonService<Api> {
+
+    // TODO getApi.groups.getRooms => Init groups
+    // TODO getApi.groups.getZones => Init zones ?
 
     static getInstance() {
         if (!HueService._instance) {
@@ -29,18 +29,6 @@ export class HueService extends HueCommonService<Api> {
     }
 
     private services: Map<HueServicesEnum, HueCommonService<ApiDefinition | Api>>;
-
-    async discoverBridge() {
-        const discoveryResults = await discovery.nupnpSearch();
-
-        if (discoveryResults.length === 0) {
-            console.error('Failed to resolve any Hue Bridges');
-            return null;
-        } else {
-            // Ignoring that you could have more than one Hue Bridge on a network as this is unlikely in 99.9% of users situations
-            return discoveryResults[0].ipaddress;
-        }
-    }
 
     getApi(): Promise<Api> {
         return this.getRootApi();

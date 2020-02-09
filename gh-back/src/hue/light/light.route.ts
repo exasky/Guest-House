@@ -2,6 +2,7 @@ import {Router} from 'express';
 import {LightController} from './light.controller';
 import {checkDtoRequest} from '../../common/middleware/check-dto-request.middleware';
 import {ColorDto} from './dto/color.dto';
+import {checkAuthentication} from '../../login/authenticationMiddleware';
 
 const router = Router();
 
@@ -9,7 +10,8 @@ const lightController = new LightController();
 
 router
     .route('/hue/light/all')
-    .get(lightController.getAll.bind(lightController));
+    .get(checkAuthentication,
+        lightController.getAll.bind(lightController));
 
 router
     .route('/hue/light/changeColor')
