@@ -1,0 +1,25 @@
+# This is an example config file
+# Please create your own config file at this place with the name 'config.yml'
+
+authentication:
+  secret: 'this is a secret password' # Use a strong password ;)
+
+typeorm: # Your postgres database config
+  type: 'postgres'
+  host: 'localhost'
+  port: 5432
+  username: 'postgres'
+  password: ''
+  database: 'guest-house'
+  entities:
+    - 'dist/**/entity/*.entity.js'
+
+port: 3000 # The nodejs server port
+
+guestHouse: # App configuration
+  adminFirstPassword: 'admin' # Admin user is created at start (for now). It's first password
+
+hue: # Hue plugin configuration
+  device: 'dev'
+  user: ''
+  key: ''
