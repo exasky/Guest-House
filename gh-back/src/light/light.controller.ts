@@ -1,6 +1,5 @@
 import {Request, Response} from 'express';
 import {constants} from 'http2';
-import {HueService} from '../hue.service';
 import {LightService} from './light.service';
 import {ColorDto} from './dto/color.dto';
 import {OnOffDto} from './dto/on-off.dto';
@@ -9,7 +8,7 @@ export class LightController {
     private lightService: LightService;
 
     constructor() {
-        this.lightService = HueService.getInstance().lights;
+        this.lightService = LightService.getInstance();
     }
 
     getAll(req: Request, res: Response) {
@@ -24,7 +23,7 @@ export class LightController {
     on(req: Request, res: Response) {
         const c: OnOffDto = req.body;
 
-        this.lightService.onOff(c.id, true)
+        this.lightService.onOff(c.manufacturer, c.id, true)
             .then(result => {
                 res.send(result);
             }).catch(err => {
@@ -35,7 +34,7 @@ export class LightController {
     off(req: Request, res: Response) {
         const c: OnOffDto = req.body;
 
-        this.lightService.onOff(c.id, false)
+        this.lightService.onOff(c.manufacturer, c.id, false)
             .then(result => {
                 res.send(result);
             }).catch(err => {
@@ -46,7 +45,7 @@ export class LightController {
     changeColor(req: Request, res: Response) {
         const c: ColorDto = req.body;
 
-        this.lightService.changeColor(c.lightId, c.red, c.green, c.blue, c.brightness)
+        this.lightService.changeColor(c.manufacturer, c.lightId, c.red, c.green, c.blue, c.brightness)
             .then(result => {
                 res.send(result);
             }).catch(err => {

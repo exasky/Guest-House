@@ -1,5 +1,6 @@
 export interface LightModel {
     id?: number;
-    light_id: number;
+    lightId: number;
     name: string;
+    manufacturer: string;
 }

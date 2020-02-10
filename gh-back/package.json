@@ -5,7 +5,7 @@
   "scripts": {
     "tsc": "tsc",
     "watch": "concurrently \"tsc -w\" \"nodemon\"",
-    "start": "node --inspect=9229 $NODE_DEBUG_OPTION ./dist/server.js"
+    "start": "node --inspect=9229 ./dist/server.js"
   },
   "author": "",
   "license": "ISC",

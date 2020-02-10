@@ -6,6 +6,8 @@ import {createConnection} from 'typeorm';
 import {App} from './app';
 import {createAdminUser} from './utils/database';
 import {configureLogger, getConfiguration, getLogger} from './utils/utils';
+import {LightService} from './light/light.service';
+import {HueLightService} from './hue/light/hue-light.service';
 
 (async () => {
     try {
@@ -37,11 +39,13 @@ import {configureLogger, getConfiguration, getLogger} from './utils/utils';
                     : 'port ' + addr.port;
                 getLogger().log('debug', 'Listening on ' + bind);
                 createAdminUser();
+                LightService.getInstance().registerService('HUE', new HueLightService());
                 // populateDatabaseForTests();
             });
 
     } catch (e) {
-        console.log(e);
+        getLogger().error(e);
         getLogger().error(JSON.stringify(e));
     }
 })();
+

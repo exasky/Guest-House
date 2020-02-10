@@ -1,23 +1,24 @@
 export class Constant {
-    public static ERROR: any = {
-        HUE: {
-            LIGHT: {
-                BRIGHTNESS: {
-                    MIN: 'ERROR.HUE.LIGHT.BRIGHTNESS.MIN',
-                    MAX: 'ERROR.HUE.LIGHT.BRIGHTNESS.MAX'
-                },
-                RED: {
-                    MIN: 'ERROR.HUE.LIGHT.RED.MIN',
-                    MAX: 'ERROR.HUE.LIGHT.RED.MAX'
-                },
-                GREEN: {
-                    MIN: 'ERROR.HUE.LIGHT.GREEN.MIN',
-                    MAX: 'ERROR.HUE.LIGHT.GREEN.MAX'
-                },
-                BLUE: {
-                    MIN: 'ERROR.HUE.LIGHT.BLUE.MIN',
-                    MAX: 'ERROR.HUE.LIGHT.BLUE.MAX'
-                }
+    static ERROR: any = {
+        MANUFACTURER: {
+            NOT_FOUND: 'ERROR.MANUFACTURER.NOT_FOUND',
+        },
+        LIGHT: {
+            BRIGHTNESS: {
+                MIN: 'ERROR.LIGHT.BRIGHTNESS.MIN',
+                MAX: 'ERROR.LIGHT.BRIGHTNESS.MAX'
+            },
+            RED: {
+                MIN: 'ERROR.LIGHT.RED.MIN',
+                MAX: 'ERROR.LIGHT.RED.MAX'
+            },
+            GREEN: {
+                MIN: 'ERROR.LIGHT.GREEN.MIN',
+                MAX: 'ERROR.LIGHT.GREEN.MAX'
+            },
+            BLUE: {
+                MIN: 'ERROR.LIGHT.BLUE.MIN',
+                MAX: 'ERROR.LIGHT.BLUE.MAX'
             }
         }
     }

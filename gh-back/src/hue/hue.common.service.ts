@@ -1,5 +1,5 @@
 import Api from 'node-hue-api/lib/api/Api';
-import {getConfiguration} from '../../utils/utils';
+import {getConfiguration, getLogger} from '../utils/utils';
 import ApiDefinition from 'node-hue-api/lib/api/http/ApiDefinition';
 
 const v3 = require('node-hue-api').v3
@@ -12,7 +12,7 @@ export abstract class HueCommonService<A extends ApiDefinition | Api> {
         const discoveryResults = await discovery.nupnpSearch();
 
         if (discoveryResults.length === 0) {
-            console.error('Failed to resolve any Hue Bridges');
+            getLogger().error('Failed to resolve any Hue Bridges');
             return null;
         } else {
             // Ignoring that you could have more than one Hue Bridge on a network as this is unlikely in 99.9% of users situations

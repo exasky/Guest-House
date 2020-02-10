@@ -6,9 +6,12 @@ export class LightEntity implements LightModel {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({unique: true})
-    light_id: number;
+    @Column({name: 'light_id', unique: true})
+    lightId: number;
 
     @Column({unique: true})
     name: string;
+
+    @Column()
+    manufacturer: string;
 }
