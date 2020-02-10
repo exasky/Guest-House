@@ -23,3 +23,5 @@ hue: # Hue plugin configuration
   device: 'dev'
   user: ''
   key: ''
+
+#TODO maybe add properties to declare services to register at start ?

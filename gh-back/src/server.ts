@@ -39,7 +39,7 @@ import {HueLightService} from './hue/light/hue-light.service';
                     : 'port ' + addr.port;
                 getLogger().log('debug', 'Listening on ' + bind);
                 createAdminUser();
-                LightService.getInstance().registerService('HUE', new HueLightService());
+                LightService.getInstance().registerService('Philips', new HueLightService());
                 // populateDatabaseForTests();
             });
 

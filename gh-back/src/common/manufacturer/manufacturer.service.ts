@@ -23,3 +23,8 @@ export class ManufacturerService {
         return this.manufacturers;
     }
 }
+
+// TODO maybe extended ? or maybe leave the manufacturer list to ManufacturerService constructor to let people choose their manufacturer
+export enum Manufacturer {
+    PHILLIPS = 'Philips'
+}

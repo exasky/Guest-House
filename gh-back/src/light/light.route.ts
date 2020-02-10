@@ -3,7 +3,6 @@ import {LightController} from './light.controller';
 import {checkDtoRequest} from '../common/middleware/check-dto-request.middleware';
 import {ColorDto} from './dto/color.dto';
 import {checkAuthentication} from '../login/authenticationMiddleware';
-import {LightService} from './light.service';
 
 const router = Router();
 

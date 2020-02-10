@@ -12,6 +12,6 @@ export class LightEntity implements LightModel {
     @Column({unique: true})
     name: string;
 
-    @Column()
+    @Column({nullable: true})
     manufacturer: string;
 }
