@@ -8,6 +8,7 @@ import {createAdminUser} from './utils/database';
 import {configureLogger, getConfiguration, getLogger} from './utils/utils';
 import {LightService} from './light/light.service';
 import {HueLightService} from './hue/light/hue-light.service';
+import {registerServices} from './configure';
 
 (async () => {
     try {
@@ -39,7 +40,8 @@ import {HueLightService} from './hue/light/hue-light.service';
                     : 'port ' + addr.port;
                 getLogger().log('debug', 'Listening on ' + bind);
                 createAdminUser();
-                LightService.getInstance().registerService('Philips', new HueLightService());
+                registerServices();
+
                 // populateDatabaseForTests();
             });
 
