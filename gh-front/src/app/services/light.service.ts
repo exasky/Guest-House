@@ -14,6 +14,6 @@ export class LightService {
   }
 
   getAll(): Observable<LightModel[]> {
-    return this.http.get<LightModel[]>(environment.serverUrl + '/hue/light/all');
+    return this.http.get<LightModel[]>(environment.serverUrl + '/light/all');
   }
 }
