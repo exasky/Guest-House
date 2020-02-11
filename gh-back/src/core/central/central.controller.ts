@@ -17,4 +17,13 @@ export class CentralController {
             res.status(constants.HTTP_STATUS_BAD_REQUEST).send(err);
         })
     }
+
+    getEquipmentTypes(req: Request, res: Response) {
+        this.centralService.getEquipmentTypes()
+            .then(deviceTypes => {
+                res.send(deviceTypes);
+            }).catch(err => {
+            res.status(constants.HTTP_STATUS_BAD_REQUEST).send(err);
+        })
+    }
 }

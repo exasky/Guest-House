@@ -11,4 +11,9 @@ router
     .get(checkAuthentication,
         centralController.getAll.bind(centralController));
 
+router
+    .route('/home-services/types')
+    .get(checkAuthentication,
+        centralController.getEquipmentTypes.bind(centralController));
+
 export default router;

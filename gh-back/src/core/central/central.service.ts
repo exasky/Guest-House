@@ -1,9 +1,9 @@
-import {EquipmentModel} from './equipment';
+import {DeviceType, EquipmentModel} from './equipment';
 import {getLogger} from '../../utils/utils';
 
 /**
  * This aggregate other equipment services (such as {@link LightService}}
- * 
+ *
  * Equipment services must implements {@link HomeService} interface.
  *
  * In order to register your own equipment service, use {@link registerService} method.
@@ -35,15 +35,21 @@ export class CentralService {
             promises.push(service.getAll());
         });
         return new Promise((res, rej) => {
-            Promise.all(promises).then(allLights => {
-                let homeServiceModels: EquipmentModel[] = [];
-                allLights.forEach(homeServicesFromPromise => {
-                    homeServiceModels = homeServiceModels.concat(homeServicesFromPromise);
+            Promise.all(promises).then(allEquiments => {
+                let equipmentModels: EquipmentModel[] = [];
+                allEquiments.forEach(equipmentFromPromise => {
+                    equipmentModels = equipmentModels.concat(equipmentFromPromise);
                 });
-                res(homeServiceModels);
+                res(equipmentModels);
             }).catch(err => {
                 rej(err);
             });
+        });
+    }
+
+    getEquipmentTypes(): Promise<DeviceType[]> {
+        return this.getAll().then(equipments => {
+            return [... new Set(equipments.map(equipment => equipment.type))];
         });
     }
 
