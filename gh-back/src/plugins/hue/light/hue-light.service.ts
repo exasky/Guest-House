@@ -1,12 +1,12 @@
-import {getLogger} from '../../utils/utils';
+import {getLogger} from '../../../utils/utils';
 import Lights from 'node-hue-api/lib/api/Lights';
 import Light from 'node-hue-api/lib/model/Light';
 import {HueCommonService} from '../hue.common.service';
 import {getRepository} from 'typeorm';
 import LightState from 'node-hue-api/lib/model/lightstate/LightState';
-import {ILightService} from '../../light/light.service';
-import {LightModel} from '../../light/light';
-import {LightEntity} from '../../light/entity/light.entity';
+import {ILightService} from '../../../core/light/light.service';
+import {LightModel} from '../../../core/light/light';
+import {LightEntity} from '../../../core/light/entity/light.entity';
 
 export class HueLightService extends HueCommonService<Lights> implements ILightService {
 

@@ -1,6 +1,6 @@
-import {LightService} from '../../src/light/light.service';
+import {LightService} from '../../src/core/light/light.service';
 import {Manufacturer} from '../../src/common/manufacturer/manufacturer.service';
-import {HueLightService} from '../../src/hue/light/hue-light.service';
+import {HueLightService} from '../../src/plugins/hue/light/hue-light.service';
 
 describe('manual test for light', () => {
     LightService.getInstance().registerService(Manufacturer.PHILLIPS, new HueLightService());

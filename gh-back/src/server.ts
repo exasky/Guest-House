@@ -6,8 +6,8 @@ import {createConnection} from 'typeorm';
 import {App} from './app';
 import {createAdminUser} from './utils/database';
 import {configureLogger, getConfiguration, getLogger} from './utils/utils';
-import {LightService} from './light/light.service';
-import {HueLightService} from './hue/light/hue-light.service';
+import {LightService} from './core/light/light.service';
+import {HueLightService} from './plugins/hue/light/hue-light.service';
 import {registerServices} from './configure';
 
 (async () => {

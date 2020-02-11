@@ -1,6 +1,6 @@
 import Api from 'node-hue-api/lib/api/Api';
 import {HueCommonService} from './hue.common.service';
-import {getConfiguration, getLogger} from '../utils/utils';
+import {getConfiguration, getLogger} from '../../utils/utils';
 
 export class HueService extends HueCommonService<Api> {
 

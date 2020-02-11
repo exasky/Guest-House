@@ -1,6 +1,6 @@
 import {Max, Min} from 'class-validator';
-import {CheckableDto} from '../../common/middleware/check-dto-request.middleware';
-import {Constant} from '../../utils/constant';
+import {CheckableDto} from '../../../common/middleware/check-dto-request.middleware';
+import {Constant} from '../../../utils/constant';
 
 export class ColorDto implements CheckableDto {
     manufacturer: string;

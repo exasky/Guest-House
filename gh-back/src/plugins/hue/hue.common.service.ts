@@ -1,5 +1,5 @@
 import Api from 'node-hue-api/lib/api/Api';
-import {getConfiguration, getLogger} from '../utils/utils';
+import {getConfiguration, getLogger} from '../../utils/utils';
 import ApiDefinition from 'node-hue-api/lib/api/http/ApiDefinition';
 
 const v3 = require('node-hue-api').v3

@@ -1,10 +1,11 @@
-import {getLogger} from '../utils/utils';
+import {getLogger} from '../../utils/utils';
 import {getRepository} from 'typeorm';
 import {LightEntity} from './entity/light.entity';
 import {LightModel} from './light';
-import {Constant} from '../utils/constant';
+import {Constant} from '../../utils/constant';
+import {HomeService} from '../central/central.service';
 
-export class LightService {
+export class LightService implements HomeService {
 
     static getInstance() {
         if (!LightService._instance) {
@@ -22,7 +23,7 @@ export class LightService {
     }
 
     registerService(manufacturer: string, lightService: ILightService) {
-        lightService.createOrUpdateAll().then(lights => {
+        lightService.createOrUpdateAll().then(() => {
             getLogger().info('[LightService] Lights updated for manufacturer: ' + manufacturer);
         });
         this.services.set(manufacturer, lightService);

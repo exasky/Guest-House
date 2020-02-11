@@ -1,6 +1,5 @@
-export interface LightModel {
+export interface HomeServiceModel {
     id?: number;
-    lightId: number;
     name: string;
     manufacturer: string;
 }

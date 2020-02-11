@@ -1,8 +1,8 @@
 import {Router} from 'express';
 import {LightController} from './light.controller';
-import {checkDtoRequest} from '../common/middleware/check-dto-request.middleware';
+import {checkDtoRequest} from '../../common/middleware/check-dto-request.middleware';
 import {ColorDto} from './dto/color.dto';
-import {checkAuthentication} from '../login/authenticationMiddleware';
+import {checkAuthentication} from '../../login/authenticationMiddleware';
 
 const router = Router();
 
@@ -14,7 +14,7 @@ router
         lightController.getAll.bind(lightController));
 
 router
-    .route('/light/changeColor')
+    .route('/light/change-color')
     .post(checkAuthentication,
         checkDtoRequest(new ColorDto()),
         lightController.changeColor.bind(lightController));
