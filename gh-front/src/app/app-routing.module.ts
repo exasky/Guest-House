@@ -1,14 +1,19 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import {LoginComponent} from "./components/login/login.component";
-import {IsAuthGuard} from "./guard/isAuthGuard";
-import {DashboardComponent} from "./components/dashboard/dashboard.component";
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {IsAuthGuard} from "./core/auth/guard/isAuthGuard";
 
 
 const routes: Routes = [
-  {path: 'login', component: LoginComponent},
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then(mod => mod.LoginModule)
+  },
   {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
-  {path: 'dashboard', canActivate: [IsAuthGuard], component: DashboardComponent},
+  {
+    path: 'dashboard',
+    canActivate: [IsAuthGuard],
+    loadChildren: () => import('./dashboard/dashboard.module').then(mod => mod.DashboardModule)
+  }
 ];
 
 @NgModule({
@@ -18,4 +23,5 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

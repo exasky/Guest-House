@@ -1,5 +1,5 @@
 import {Component, HostBinding} from '@angular/core';
-import {LoginService} from '../../services/login.service';
+import {LoginService} from '../service/login.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 

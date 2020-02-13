@@ -9,19 +9,16 @@ import {AppRoutingModule} from './app-routing.module';
 import {JwtInterceptor} from './interceptor/jwtInterceptor';
 
 import {AppComponent} from './app.component';
-
-
-import {LoginComponent} from './components/login/login.component';
-import {IsAuthGuard} from './guard/isAuthGuard';
+import {IsAuthGuard} from './core/auth/guard/isAuthGuard';
 import {MaterialModule} from "./material.module";
-import {DashboardComponent} from "./components/dashboard/dashboard.component";
+import {LoginModule} from "./login/login.module";
+import {CoreModule} from "./core/core.module";
+import {DashboardModule} from "./dashboard/dashboard.module";
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    LoginComponent,
-    DashboardComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -30,10 +27,12 @@ import {DashboardComponent} from "./components/dashboard/dashboard.component";
     FormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LoginModule,
+    DashboardModule,
+    CoreModule.forRoot()
   ],
-  entryComponents: [
-  ],
+  entryComponents: [],
   providers: [
     IsAuthGuard,
     {

@@ -1,8 +1,8 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 
-import {environment} from '../../environments/environment';
-import {LightModel} from "../model/light/light";
+import {environment} from "../../../../environments/environment";
+import {LightModel} from "../model/light";
 import {Observable} from "rxjs";
 
 @Injectable({

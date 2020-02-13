@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {UserModel} from "../model/user.model";
+import {UserModel} from "../../model/user.model";
 import {Observable, Subject, PartialObserver, Subscription} from "rxjs";
 import * as jwt_decode from 'jwt-decode';
 

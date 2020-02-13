@@ -1,28 +1,17 @@
-import {Component, OnInit} from '@angular/core';
-import {LoginService} from "./services/login.service";
-import {AuthService} from "./services/auth.service";
-import {LightService} from "./services/light.service";
-import {LightModel} from "./model/light/light";
+import {Component} from '@angular/core';
+import {LoginService} from "./login/service/login.service";
+import {AuthService} from "./core/auth/service/auth.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html'
 })
-export class AppComponent implements OnInit {
-  title = 'gh-front';
+export class AppComponent {
 
   sidenavOpened = false;
 
-  lights: LightModel[];
-
   constructor(public authService: AuthService,
-              public loginService: LoginService,
-              public lightService: LightService) {
+              public loginService: LoginService) {
   }
 
-  ngOnInit(): void {
-    this.lightService.getAll().subscribe(lights => {
-      this.lights = lights;
-    })
-  }
 }
