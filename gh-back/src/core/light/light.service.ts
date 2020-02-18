@@ -1,9 +1,10 @@
 import {getLogger} from '../../utils/utils';
 import {getRepository} from 'typeorm';
 import {LightEntity} from './entity/light.entity';
-import {LightModel} from './light';
+import {LightDetailModel, LightModel} from './light';
 import {Constant} from '../../utils/constant';
 import {HomeService} from '../central/central.service';
+import {LightDto} from './dto/light.dto';
 
 export class LightService implements HomeService {
 
@@ -31,6 +32,16 @@ export class LightService implements HomeService {
 
     getAll(): Promise<LightModel[]> {
         return getRepository(LightEntity).find();
+    }
+
+    async getDetail(id: number | string): Promise<LightDto> {
+        return getRepository(LightEntity).findOne({
+            where: {id}
+        }).then(light => {
+            return this.services.get(light.manufacturer).getDetails(light.lightId).then(lightDetail => {
+                return {...light, ...lightDetail};
+            })
+        });
     }
 
     changeColor(manufacturer: string, lightId: number, red: number, green: number, blue: number, brightness: number): Promise<any> {
@@ -73,7 +84,11 @@ export class LightService implements HomeService {
 }
 
 export interface ILightService {
+    getDetails(lightId: string | number): Promise<LightDetailModel>
+
     changeColor(lightId: number, red: number, green: number, blue: number, brightness: number): Promise<boolean>;
+
     onOff(lightId: number, on: boolean): Promise<boolean>
+
     createOrUpdateAll(): Promise<LightModel[]>;
 }

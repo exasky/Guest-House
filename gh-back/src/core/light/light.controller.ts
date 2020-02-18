@@ -3,6 +3,7 @@ import {constants} from 'http2';
 import {LightService} from './light.service';
 import {ColorDto} from './dto/color.dto';
 import {OnOffDto} from './dto/on-off.dto';
+import {getLogger} from '../../utils/utils';
 
 export class LightController {
     private lightService: LightService;
@@ -18,6 +19,18 @@ export class LightController {
             }).catch(err => {
             res.status(constants.HTTP_STATUS_BAD_REQUEST).send(err);
         })
+    }
+
+    getDetail(req: Request, res: Response) {
+        const id = req.params.id;
+        this.lightService.getDetail(id)
+            .then(light => {
+                res.send(light);
+            })
+            .catch((err: any) => {
+                getLogger().error(err);
+                res.status(400).send(err);
+            });
     }
 
     on(req: Request, res: Response) {

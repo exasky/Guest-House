@@ -1,14 +1,12 @@
-import {DeviceType, EquipmentModel} from '../central/equipment';
+import {LightDetailModel, LightModel} from '../light';
+import {DeviceType} from '../../central/equipment';
 
-export interface LightModel extends EquipmentModel {
+export class LightDto implements LightModel, LightDetailModel {
     id?: number;
     lightId: number;
     name: string;
     manufacturer: string;
     type: DeviceType.LIGHT;
-}
-
-export interface LightDetailModel {
     on: boolean;
     red: number;
     green: number;

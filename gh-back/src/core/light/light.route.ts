@@ -14,6 +14,11 @@ router
         lightController.getAll.bind(lightController));
 
 router
+    .route('/light/detail/:id')
+    .get(checkAuthentication,
+        lightController.getDetail.bind(lightController));
+
+router
     .route('/light/change-color')
     .post(checkAuthentication,
         checkDtoRequest(new ColorDto()),
