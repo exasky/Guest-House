@@ -1,6 +1,13 @@
-{{types | json}}
-<br/>
-<br/>
-<br/>
-<br/>
-{{equipments | json}}
+<h2>Mes favoris</h2>
+<p>... Liste des favoris :D</p>
+
+<h2>Équipements disponibles: </h2>
+<div class="d-flex flex-grow flex-wrap justify-content-center align-items-center">
+  <ng-template ngFor let-equipment [ngForOf]="equipments">
+    <ng-container [ngSwitch]="equipment.type">
+      <app-light-card *ngSwitchCase="DeviceType.LIGHT"
+                      class="mx-2"
+                      [light]="equipment"></app-light-card>
+    </ng-container>
+  </ng-template>
+</div>

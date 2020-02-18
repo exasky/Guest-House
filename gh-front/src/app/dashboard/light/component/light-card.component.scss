@@ -1,0 +1,9 @@
+mat-card {
+  min-height: 200px;
+  min-width: 200px;
+  transition: transform .2s;
+}
+
+mat-card:hover {
+  transform: scale(1.05);
+}

@@ -1,0 +1,29 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{light.name}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="d-flex justify-content-center">
+    <i [class]="(light.on ? 'fas' : 'far') + ' fa-3x fa-lightbulb'"
+       [style.color]="'rgba(' + light.red + ',' + light.green +','+light.blue+','+ (light.on ? '1':'0.3' )+')'"
+    ></i>
+  </mat-card-content>
+  <mat-card-actions class="d-flex flex-column">
+    <button mat-button (click)="onOff()">ON/OFF</button>
+
+    <mcc-color-picker [usedSizeColors]="7"
+                      mccConnectedColorPicker [mccConnectedColorPickerOrigin]="trigger"
+    (selected)="changeColor($event)">
+    </mcc-color-picker>
+    <input mccColorPickerOrigin #trigger="mccColorPickerOrigin" [(ngModel)]="color"
+           [ngModelOptions]="{standalone: true}" hidden/>
+
+    <mat-slider
+      [min]="0"
+      [max]="100"
+      [tickInterval]="10"
+      (change)="changeBrightness($event)"
+      [(ngModel)]="brightness">
+    </mat-slider>
+
+  </mat-card-actions>
+</mat-card>

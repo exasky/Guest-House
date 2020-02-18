@@ -6,5 +6,5 @@ export interface EquipmentModel {
 }
 
 export enum DeviceType {
-  LIGHT
+  LIGHT= 'LIGHT'
 }

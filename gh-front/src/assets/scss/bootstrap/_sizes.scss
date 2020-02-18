@@ -18,4 +18,14 @@
   .ml-#{$key} {
     margin-left: $spacer !important;
   }
+
+  .mx-#{$key} {
+    margin-right: $spacer !important;
+    margin-left: $spacer !important;
+  }
+
+  .my-#{$key} {
+    margin-top: $spacer !important;
+    margin-bottom: $spacer !important;
+  }
 }

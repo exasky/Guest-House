@@ -1,4 +1,4 @@
-import {Component, HostBinding, OnInit} from '@angular/core';
+import {Component, ComponentFactoryResolver, HostBinding, OnInit, ViewContainerRef} from '@angular/core';
 import {LightService} from "./light/service/light.service";
 import {CentralService} from "../core/home-services/central.service";
 import {DeviceType, EquipmentModel} from "../core/model/equipmentModel";
@@ -8,13 +8,16 @@ import {DeviceType, EquipmentModel} from "../core/model/equipmentModel";
   templateUrl: './dashboard.component.html'
 })
 export class DashboardComponent implements OnInit {
-  @HostBinding('class') cssClass = 'd-flex flex-grow';
+  @HostBinding('class') cssClass = 'd-flex flex-grow flex-column';
 
   equipments: EquipmentModel[];
   types: DeviceType[];
+  DeviceType = DeviceType;
 
   constructor(public lightService: LightService,
-              public centralService: CentralService) {
+              public centralService: CentralService,
+              private factoryResolver: ComponentFactoryResolver,
+              private rootViewContainer: ViewContainerRef) {
   }
 
   ngOnInit(): void {
@@ -24,5 +27,23 @@ export class DashboardComponent implements OnInit {
     this.centralService.getEquipmentTypes().subscribe(types => {
       this.types = types;
     });
+  }
+
+  private injectEquipmentComponents() {
+    this.equipments.forEach(equipment => {
+      let equipmentComponent;
+      switch (equipment.type) {
+        case DeviceType.LIGHT:
+          // equipmentComponent = Lig
+        default:
+          break;
+      }
+
+      const factory = this.factoryResolver
+        .resolveComponentFactory(equipmentComponent)
+      const component = factory
+        .create(this.rootViewContainer.parentInjector)
+      this.rootViewContainer.insert(component.hostView)
+    })
   }
 }
